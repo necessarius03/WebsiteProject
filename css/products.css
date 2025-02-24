@@ -1,0 +1,15 @@
+.products {
+    padding: 2rem 0;
+}
+
+.products__filter {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 10px;
+}
+
+.products__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
