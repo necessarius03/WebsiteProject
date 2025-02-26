@@ -1,28 +1,126 @@
 .featured {
     padding: 2rem 0;
+    position: relative;
+}
+
+.featured__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.featured__carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .featured__products {
     display: flex;
     gap: 20px;
-    overflow-x: auto;
+    overflow-x: hidden;
     padding: 1rem;
+    scroll-behavior: smooth;
+    width: 100%;
 }
 
 .product-card {
     border: 1px solid #ddd;
+    border-radius: 8px;
     padding: 1rem;
     text-align: center;
     min-width: 200px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .product-card img {
     width: 100%;
-    height: auto;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.product-card h3 {
+    font-size: 16px;
+    margin: 10px 0;
+    height: 40px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .product-card .price {
     color: #e44d26;
     font-weight: bold;
     margin: 10px 0;
+    font-size: 18px;
+}
+
+.add-to-cart {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.add-to-cart:hover {
+    background-color: #45a049;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background 0.3s ease;
+}
+
+.carousel-control:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.carousel-control.prev {
+    left: 0;
+}
+
+.carousel-control.next {
+    right: 0;
+}
+
+@media (max-width: 768px) {
+    .carousel-control {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+    
+    .product-card {
+        min-width: 160px;
+    }
 }
