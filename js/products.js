@@ -1,7 +1,14 @@
 // Function to initialize products
 function initProducts() {
+    console.log("Initializing products grid...");
+    
     // Get the products grid element
     const productsGrid = document.getElementById('products-grid');
+    
+    if (!productsGrid) {
+        console.error("Products grid element not found!");
+        return;
+    }
     
     // Filter elements
     const brandFilter = document.querySelector('.filter-brand');
@@ -38,18 +45,22 @@ function initProducts() {
         });
         
         // Add event listeners to "Add to cart" buttons
-        document.querySelectorAll('.add-to-cart').forEach(button => {
+        document.querySelectorAll('#products-grid .add-to-cart').forEach(button => {
             button.addEventListener('click', function() {
                 const productId = this.getAttribute('data-id');
-                addToCart(productId);
+                if (typeof window.addToCart === 'function') {
+                    window.addToCart(productId);
+                } else {
+                    console.error('addToCart function not found!');
+                }
             });
         });
     }
     
     // Function to filter products
     function filterProducts() {
-        const selectedBrand = brandFilter.value;
-        const selectedPrice = priceFilter.value;
+        const selectedBrand = brandFilter ? brandFilter.value : '';
+        const selectedPrice = priceFilter ? priceFilter.value : '';
         
         let filteredProducts = [...products];
         
@@ -95,6 +106,8 @@ function initProducts() {
     
     // Initially render all products
     renderProducts(products);
+    
+    console.log("Products grid initialization complete");
 }
 
 // Check if products variable is defined in another file

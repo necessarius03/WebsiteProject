@@ -22,7 +22,7 @@ const products = [
         price: 23990000,
         image: "images/products/xiaomi14ultra.jpg",
         category: "xiaomi",
-        featured: true
+        featured: false
     },
     {
         id: 4,

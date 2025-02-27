@@ -4,8 +4,8 @@ function initFeaturedCarousel() {
     
     // Get DOM elements
     const productsContainer = document.querySelector('.featured__products');
-    const prevButton = document.querySelector('.featured__carousel .prev');
-    const nextButton = document.querySelector('.featured__carousel .next');
+    const prevButton = document.querySelector('.featured__carousel .carousel-control.prev');
+    const nextButton = document.querySelector('.featured__carousel .carousel-control.next');
     
     if (!productsContainer) {
         console.error("Products container not found!");
@@ -17,10 +17,12 @@ function initFeaturedCarousel() {
     
     // Check if we have any featured products
     if (featuredProducts.length === 0) {
-        console.log("No featured products found, using all products");
-        // If no featured products, use all products
-        renderProducts(products);
+        console.log("No featured products found!");
+        document.querySelector('.featured').style.display = 'none';
+        return;
     } else {
+        // Make sure the featured section is visible
+        document.querySelector('.featured').style.display = 'block';
         renderProducts(featuredProducts);
     }
     
@@ -77,10 +79,14 @@ function initFeaturedCarousel() {
     // Add event listeners to navigation buttons
     if (prevButton) {
         prevButton.addEventListener('click', () => scrollCarousel('prev'));
+    } else {
+        console.error("Previous button not found in featured carousel!");
     }
     
     if (nextButton) {
         nextButton.addEventListener('click', () => scrollCarousel('next'));
+    } else {
+        console.error("Next button not found in featured carousel!");
     }
     
     // Add keyboard navigation
