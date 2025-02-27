@@ -1,12 +1,62 @@
-/* Bổ sung vào file header.css hiện tại */
-
+/* Bổ sung vào file header.css */
 .header {
     background: #fff;
-    padding: 1rem;
+    padding: 1rem 0; /* Thay đổi padding để chỉ có top và bottom */
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: block; /* Thay đổi từ flex thành block */
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* Container cho nội dung header */
+.header__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.header--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Class để thêm padding vào body khi header cố định */
+body.has-fixed-header {
+    padding-top: 80px; /* Điều chỉnh cho phù hợp với chiều cao header */
+}
+
+/* Thay đổi kích thước logo khi header cố định */
+.header--fixed .header__logo img {
+    height: 40px; /* Thu nhỏ logo khi cố định */
+}
+
+/* Thu nhỏ thanh tìm kiếm khi header cố định */
+.header--fixed .header__search input {
+    padding: 6px;
+    width: 250px;
+}
+
+/* Điều chỉnh responsive */
+@media (max-width: 768px) {
+    .header__container {
+        flex-wrap: wrap;
+    }
+    
+    .header__search {
+        order: 3;
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    body.has-fixed-header {
+        padding-top: 120px; /* Điều chỉnh cho responsive */
+    }
 }
 
 .header__logo img {

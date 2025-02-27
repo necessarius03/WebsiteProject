@@ -4,7 +4,7 @@ const products = [
         id: 1,
         name: "iPhone 15 Pro Max",
         price: 29990000,
-        image: "images/products/iphone15promax.jpg",
+        image: "images/products/1.png",
         category: "apple",
         featured: true
     },
@@ -12,7 +12,7 @@ const products = [
         id: 2,
         name: "Samsung Galaxy S24 Ultra",
         price: 29990000,
-        image: "images/products/s24ultra.jpg",
+        image: "images/products/1.png",
         category: "samsung",
         featured: true
     },
@@ -20,7 +20,7 @@ const products = [
         id: 3,
         name: "Xiaomi 14 Ultra",
         price: 23990000,
-        image: "images/products/xiaomi14ultra.jpg",
+        image: "images/products/2.png",
         category: "xiaomi",
         featured: false
     },
@@ -28,7 +28,7 @@ const products = [
         id: 4,
         name: "OPPO Find X7 Ultra",
         price: 24990000,
-        image: "images/products/oppofindx7.jpg",
+        image: "images/products/3.png",
         category: "oppo",
         featured: true
     },
@@ -36,7 +36,7 @@ const products = [
         id: 5,
         name: "Google Pixel 8 Pro",
         price: 19990000,
-        image: "images/products/pixel8pro.jpg",
+        image: "images/products/4.png",
         category: "google",
         featured: true
     },
@@ -44,7 +44,7 @@ const products = [
         id: 6,
         name: "iPhone 15",
         price: 19990000,
-        image: "images/products/iphone15.jpg",
+        image: "images/products/5.png",
         category: "apple",
         featured: false
     },
