@@ -33,21 +33,20 @@
     width: 100%;
 }
 
-/* Thêm vào file featured.css */
-
 .product-card {
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 1rem;
-    text-align: center;
-    /* Cố định chiều rộng thay vì min-width */
+    padding: 0; /* Bỏ padding để ảnh kín hơn */
     width: 200px;
     flex-shrink: 0;
     transition: transform 0.3s ease;
     background-color: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    /* Đảm bảo các phần tử con không làm thay đổi kích thước thẻ */
     overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 300px; /* Cố định chiều cao cho card */
 }
 
 .product-card:hover {
@@ -56,34 +55,50 @@
     border-color: #b3d9ff;
 }
 
-/* Giữ nguyên chiều rộng phần ảnh */
+/* Điều chỉnh phần ảnh chiếm 1/2 chiều cao */
 .product-card img {
     width: 100%;
-    height: 180px;
-    object-fit: contain;
-    margin-bottom: 10px;
+    height: 160px; /* Cố định chiều cao là 1/2 chiều cao card */
+    object-fit: cover; /* Thay đổi từ contain thành cover để ảnh kín hết phần hiển thị */
+    margin-bottom: 0; /* Bỏ margin-bottom */
 }
 
-/* Đảm bảo tiêu đề không làm thay đổi chiều rộng thẻ */
+/* Phần nội dung bên dưới ảnh */
+.product-card .product-content {
+    padding: 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    height: 120px; /* Cố định chiều cao phần nội dung */
+    position: relative; /* Để định vị nút */
+}
+
+/* Thay đổi màu và vị trí giá tiền */
+.product-card .price {
+    color: #ff7700; /* Màu cam thay vì đỏ */
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    font-size: 18px;
+    text-align: left;
+    order: 1; /* Hiển thị trước tên sản phẩm */
+}
+
+/* Điều chỉnh style cho tên sản phẩm */
 .product-card h3 {
-    font-size: 16px;
-    margin: 10px 0;
-    height: 40px;
+    font-size: 14px;
+    margin: 0;
+    max-height: 40px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    /* Đảm bảo text không vượt quá kích thước thẻ */
     word-wrap: break-word;
+    text-align: left;
+    order: 2; /* Hiển thị sau giá tiền */
+    color: #333;
 }
 
-.product-card .price {
-    color: #e44d26;
-    font-weight: bold;
-    margin: 10px 0;
-    font-size: 18px;
-}
-
+/* Điều chỉnh nút thêm vào giỏ hàng */
 .add-to-cart {
     background-color: #4CAF50;
     color: white;
@@ -93,9 +108,12 @@
     cursor: pointer;
     transition: background-color 0.3s;
     font-weight: bold;
-    /* Đảm bảo nút không làm thẻ bị kéo giãn */
-    width: 100%;
+    width: 90%; /* Giảm chiều rộng để tạo margin hai bên */
     box-sizing: border-box;
+    position: absolute; /* Định vị tuyệt đối */
+    bottom: -10px; /* Cách bottom 10px */
+    left: 50%; /* Canh giữa */
+    transform: translateX(-50%); /* Canh giữa chính xác */
 }
 
 .add-to-cart:hover {

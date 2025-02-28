@@ -48,40 +48,83 @@
 .products__grid .product-card {
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 1rem;
-    text-align: center;
+    padding: 0;
+    width: 100%;
     transition: transform 0.3s ease;
     background-color: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 300px; /* Cố định chiều cao cho card */
 }
 
 .products__grid .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-color: #b3d9ff;
 }
 
 .products__grid .product-card img {
     width: 100%;
-    height: 180px;
-    object-fit: contain;
-    margin-bottom: 10px;
+    height: 160px; /* Cố định chiều cao là 1/2 chiều cao card */
+    object-fit: cover;
+    margin-bottom: 0;
+}
+
+/* Phần nội dung bên dưới ảnh */
+.products__grid .product-card .product-content {
+    padding: 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    height: 120px; /* Cố định chiều cao phần nội dung */
+    position: relative; /* Để định vị nút */
 }
 
 .products__grid .product-card h3 {
-    font-size: 16px;
-    margin: 10px 0;
-    height: 40px;
+    font-size: 14px;
+    margin: 0;
+    max-height: 40px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    text-align: left;
+    order: 2; /* Hiển thị sau giá tiền */
+    color: #333;
 }
 
 .products__grid .product-card .price {
-    color: #e44d26;
+    color: #ff7700; /* Màu cam thay vì đỏ */
     font-weight: bold;
-    margin: 10px 0;
+    margin: 0 0 5px 0;
     font-size: 18px;
+    text-align: left;
+    order: 1; /* Hiển thị trước tên sản phẩm */
+}
+
+.products__grid .add-to-cart {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    width: 90%; /* Giảm chiều rộng để tạo margin hai bên */
+    box-sizing: border-box;
+    position: absolute; /* Định vị tuyệt đối */
+    bottom: -10px; /* Cách bottom 10px */
+    left: 50%; /* Canh giữa */
+    transform: translateX(-50%); /* Canh giữa chính xác */
+}
+
+.products__grid .add-to-cart:hover {
+    background-color: #45a049;
 }
 
 /* No products found message */

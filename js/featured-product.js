@@ -41,11 +41,14 @@ function initFeaturedCarousel() {
             productCard.className = 'product-card';
             productCard.dataset.id = product.id;
             
+            // Cấu trúc HTML mới với thứ tự: ảnh, giá tiền, tên sản phẩm
             productCard.innerHTML = `
                 <img src="${product.image}" alt="${product.name}">
-                <h3>${product.name}</h3>
-                <p class="price">${formattedPrice}</p>
-                <button class="add-to-cart" data-id="${product.id}">Thêm vào giỏ</button>
+                <div class="product-content">
+                    <p class="price">${formattedPrice}</p>
+                    <h3>${product.name}</h3>
+                    <button class="add-to-cart" data-id="${product.id}">Thêm vào giỏ</button>
+                </div>
             `;
             
             productsContainer.appendChild(productCard);

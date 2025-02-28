@@ -30,18 +30,24 @@ function initProducts() {
             // Format price with commas
             const formattedPrice = product.price.toLocaleString('vi-VN') + '₫';
             
-            // Create product card HTML
-            const productCard = `
-                <div class="product-card" data-id="${product.id}" data-category="${product.category}">
-                    <img src="${product.image}" alt="${product.name}">
-                    <h3>${product.name}</h3>
+            // Create product card element
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.dataset.id = product.id;
+            productCard.dataset.category = product.category;
+            
+            // Set HTML structure - matching the structure used in featured-product.js
+            productCard.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <div class="product-content">
                     <p class="price">${formattedPrice}</p>
+                    <h3>${product.name}</h3>
                     <button class="add-to-cart" data-id="${product.id}">Thêm vào giỏ</button>
                 </div>
             `;
             
             // Add product card to grid
-            productsGrid.innerHTML += productCard;
+            productsGrid.appendChild(productCard);
         });
         
         // Add event listeners to "Add to cart" buttons
@@ -64,30 +70,25 @@ function initProducts() {
         
         let filteredProducts = [...products];
         
-        // Filter by brand
+        // Filter by category (brand)
         if (selectedBrand) {
             filteredProducts = filteredProducts.filter(product => product.category === selectedBrand);
         }
         
         // Filter by price
         if (selectedPrice) {
-            const [min, max] = selectedPrice.split('-');
-            
-            if (min && max) {
-                // Price range (e.g., 5-10 million)
-                filteredProducts = filteredProducts.filter(product => 
-                    product.price >= min * 1000000 && product.price <= max * 1000000
-                );
-            } else if (min === '0') {
-                // Below a certain price (e.g., below 5 million)
-                filteredProducts = filteredProducts.filter(product => 
-                    product.price <= max * 1000000
-                );
-            } else if (max === '+') {
-                // Above a certain price (e.g., above 10 million)
-                filteredProducts = filteredProducts.filter(product => 
-                    product.price >= min * 1000000
-                );
+            switch(selectedPrice) {
+                case '0-300':
+                    filteredProducts = filteredProducts.filter(product => product.price < 300000);
+                    break;
+                case '300-1000':
+                    filteredProducts = filteredProducts.filter(product => 
+                        product.price >= 300000 && product.price <= 1000000
+                    );
+                    break;
+                case '1000+':
+                    filteredProducts = filteredProducts.filter(product => product.price > 1000000);
+                    break;
             }
         }
         
@@ -110,40 +111,18 @@ function initProducts() {
     console.log("Products grid initialization complete");
 }
 
-// Function to filter products
-function filterProducts() {
-    const selectedBrand = brandFilter ? brandFilter.value : '';
-    const selectedPrice = priceFilter ? priceFilter.value : '';
-    
-    let filteredProducts = [...products];
-    
-    // Filter by category (brand)
-    if (selectedBrand) {
-        filteredProducts = filteredProducts.filter(product => product.category === selectedBrand);
+// Run initialization when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if products are loaded
+    if (typeof products !== 'undefined') {
+        initProducts();
+    } else {
+        // If products not loaded yet, wait for main.js to finish loading components
+        const checkProducts = setInterval(() => {
+            if (typeof products !== 'undefined') {
+                clearInterval(checkProducts);
+                initProducts();
+            }
+        }, 100);
     }
-    
-    // Filter by price (điều chỉnh cho phù hợp với giá mỹ phẩm)
-    if (selectedPrice) {
-        const [min, max] = selectedPrice.split('-');
-        
-        if (min && max) {
-            // Price range (e.g., 300k-1 million)
-            filteredProducts = filteredProducts.filter(product => 
-                product.price >= min * 1000 && product.price <= max * 1000
-            );
-        } else if (min === '0') {
-            // Below a certain price (e.g., below 300k)
-            filteredProducts = filteredProducts.filter(product => 
-                product.price <= max * 1000
-            );
-        } else if (max === '+') {
-            // Above a certain price (e.g., above 1 million)
-            filteredProducts = filteredProducts.filter(product => 
-                product.price >= min * 1000
-            );
-        }
-    }
-    
-    // Render filtered products
-    renderProducts(filteredProducts);
-}
+});
