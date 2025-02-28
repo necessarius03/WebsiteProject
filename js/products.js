@@ -110,26 +110,40 @@ function initProducts() {
     console.log("Products grid initialization complete");
 }
 
-// Check if products variable is defined in another file
-if (typeof products === 'undefined') {
-    console.error('Products data not loaded!');
-    // Define a fallback array of products
-    products = [
-        {
-            id: 1,
-            name: "iPhone 15 Pro Max",
-            price: 29990000,
-            image: "images/products/iphone15promax.jpg",
-            category: "apple",
-            featured: true
-        },
-        {
-            id: 2,
-            name: "Samsung Galaxy S24 Ultra",
-            price: 29990000,
-            image: "images/products/s24ultra.jpg",
-            category: "samsung",
-            featured: true
+// Function to filter products
+function filterProducts() {
+    const selectedBrand = brandFilter ? brandFilter.value : '';
+    const selectedPrice = priceFilter ? priceFilter.value : '';
+    
+    let filteredProducts = [...products];
+    
+    // Filter by category (brand)
+    if (selectedBrand) {
+        filteredProducts = filteredProducts.filter(product => product.category === selectedBrand);
+    }
+    
+    // Filter by price (điều chỉnh cho phù hợp với giá mỹ phẩm)
+    if (selectedPrice) {
+        const [min, max] = selectedPrice.split('-');
+        
+        if (min && max) {
+            // Price range (e.g., 300k-1 million)
+            filteredProducts = filteredProducts.filter(product => 
+                product.price >= min * 1000 && product.price <= max * 1000
+            );
+        } else if (min === '0') {
+            // Below a certain price (e.g., below 300k)
+            filteredProducts = filteredProducts.filter(product => 
+                product.price <= max * 1000
+            );
+        } else if (max === '+') {
+            // Above a certain price (e.g., above 1 million)
+            filteredProducts = filteredProducts.filter(product => 
+                product.price >= min * 1000
+            );
         }
-    ];
+    }
+    
+    // Render filtered products
+    renderProducts(filteredProducts);
 }
