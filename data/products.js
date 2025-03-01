@@ -1,4 +1,3 @@
-// Danh sách sản phẩm mỹ phẩm
 const products = [
     {
         id: 1,

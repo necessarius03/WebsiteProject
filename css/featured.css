@@ -1,7 +1,6 @@
 .featured {
     padding: 2rem 0;
     position: relative;
-    /* Thêm khung viền màu xanh da trời nhạt */
     background-color: #e6f2ff;
     border-radius: 8px;
     border: 2px solid #b3d9ff;
@@ -36,8 +35,7 @@
 .product-card {
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 0; /* Bỏ padding để ảnh kín hơn */
-    width: 200px;
+    width: 180px;
     flex-shrink: 0;
     transition: transform 0.3s ease;
     background-color: white;
