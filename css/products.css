@@ -1,4 +1,3 @@
-/* Products grid styles */
 .products {
     padding: 2rem 0;
     margin-bottom: 2rem;
@@ -16,7 +15,6 @@
     gap: 10px;
 }
 
-/* Responsive styles for filters */
 @media (max-width: 640px) {
     .products__header {
         flex-direction: column;
@@ -53,7 +51,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 300px; /* Cố định chiều cao cho card */
+    height: 300px;
 }
 
 .product-grid-card:hover {
@@ -62,15 +60,13 @@
     border-color: #b3d9ff;
 }
 
-/* Điều chỉnh phần ảnh chiếm 1/2 chiều cao */
 .product-grid-card img {
     width: 100%;
-    height: 160px; /* Cố định chiều cao là 1/2 chiều cao card */
+    height: 160px;
     object-fit: cover;
     margin-bottom: 0;
 }
 
-/* Phần nội dung bên dưới ảnh */
 .product-grid-card .product-content {
     padding: 10px;
     text-align: left;
@@ -80,17 +76,15 @@
     position: relative;
 }
 
-/* Thay đổi màu và vị trí giá tiền */
 .product-grid-card .price {
     color: #ff7700;
     font-weight: bold;
     margin: 0 0 5px 0;
     font-size: 18px;
     text-align: left;
-    order: 1; /* Hiển thị trước tên sản phẩm */
+    order: 1;
 }
 
-/* Điều chỉnh style cho tên sản phẩm */
 .product-grid-card h3 {
     font-size: 14px;
     margin: 0;
@@ -101,11 +95,10 @@
     -webkit-box-orient: vertical;
     word-wrap: break-word;
     text-align: left;
-    order: 2; /* Hiển thị sau giá tiền */
+    order: 2;
     color: #333;
 }
 
-/* Điều chỉnh nút thêm vào giỏ hàng */
 .product-grid-card .add-to-cart {
     background-color: #4CAF50;
     color: white;
@@ -127,7 +120,6 @@
     background-color: #45a049;
 }
 
-/* Điều chỉnh responsive */
 @media (max-width: 768px) {
     .products__grid {
         grid-template-columns: repeat(2, 1fr);

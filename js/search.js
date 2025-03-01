@@ -11,6 +11,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function searchProducts(query) {
-    // Implement search logic
     console.log('Searching for:', query);
 }

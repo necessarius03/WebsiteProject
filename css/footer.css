@@ -1,4 +1,3 @@
-/* Cập nhật CSS cho footer */
 .footer {
     background: #333;
     color: white;
@@ -33,7 +32,6 @@
     text-decoration: underline;
 }
 
-/* Đảm bảo footer ở dưới cùng ngay cả khi nội dung ngắn */
 html {
     height: 100%;
 }
@@ -50,14 +48,12 @@ main {
     flex: 1;
 }
 
-/* Thêm màu nền cho các tiêu đề trong footer */
 .footer h3 {
     margin-bottom: 1rem;
     border-bottom: 1px solid #555;
     padding-bottom: 0.5rem;
 }
 
-/* Style cho thông tin liên hệ */
 .company-info p {
     margin: 0.5rem 0;
 }

@@ -1,8 +1,6 @@
-// Function to initialize products grid
 function initProducts() {
     console.log("Initializing products grid...");
     
-    // Get DOM element
     const productsGrid = document.querySelector('.products__grid');
     const productsHeader = document.querySelector('.products__header');
     
@@ -11,19 +9,15 @@ function initProducts() {
         return;
     }
     
-    // Check if we have products data
     if (!products || products.length === 0) {
         console.error("No products data found!");
         return;
     }
     
-    // Tạo UI cho bộ lọc
     createFilterUI(productsHeader);
     
-    // Lấy danh sách category từ sản phẩm
     const categories = [...new Set(products.map(product => product.category))];
     
-    // Thêm options cho dropdown category
     const categorySelect = document.getElementById('category-filter');
     if (categorySelect) {
         categorySelect.innerHTML = '<option value="all">Tất cả danh mục</option>';
@@ -35,20 +29,15 @@ function initProducts() {
         });
     }
     
-    // Render all products in grid layout
     renderProductsGrid(products);
     
     console.log("Products grid initialization complete");
     
-    // Thêm sự kiện cho bộ lọc
     setupFilterEvents();
     
-    // Function to render products in grid layout
     function renderProductsGrid(productsList) {
-        // Clear container
         productsGrid.innerHTML = '';
         
-        // Kiểm tra nếu không có sản phẩm nào
         if (productsList.length === 0) {
             const noProductsMessage = document.createElement('div');
             noProductsMessage.className = 'no-products-message';
@@ -61,19 +50,15 @@ function initProducts() {
             return;
         }
         
-        // Add products
         productsList.forEach(product => {
-            // Format price with commas
             const formattedPrice = product.price.toLocaleString('vi-VN') + '₫';
             
-            // Create product card
             const productCard = document.createElement('div');
             productCard.className = 'product-grid-card';
             productCard.dataset.id = product.id;
             productCard.dataset.category = product.category;
             productCard.dataset.price = product.price;
             
-            // HTML structure similar to featured products
             productCard.innerHTML = `
                 <img src="${product.image}" alt="${product.name}">
                 <div class="product-content">
@@ -86,7 +71,6 @@ function initProducts() {
             productsGrid.appendChild(productCard);
         });
         
-        // Add event listeners to "Add to cart" buttons
         document.querySelectorAll('.products__grid .add-to-cart').forEach(button => {
             button.addEventListener('click', function() {
                 const productId = this.getAttribute('data-id');
@@ -99,7 +83,6 @@ function initProducts() {
         });
     }
     
-    // Tạo UI cho bộ lọc
     function createFilterUI(headerElement) {
         const filterContainer = document.createElement('div');
         filterContainer.className = 'products__filters';
@@ -107,7 +90,6 @@ function initProducts() {
         filterContainer.style.gap = '15px';
         filterContainer.style.alignItems = 'center';
         
-        // Filter by category
         const categoryFilter = document.createElement('div');
         categoryFilter.innerHTML = `
             <select id="category-filter" class="filter-select">
@@ -115,7 +97,6 @@ function initProducts() {
             </select>
         `;
         
-        // Filter by price
         const priceFilter = document.createElement('div');
         priceFilter.innerHTML = `
             <select id="price-filter" class="filter-select">
@@ -127,7 +108,6 @@ function initProducts() {
             </select>
         `;
         
-        // Apply styles to selects
         const selectStyle = `
             .filter-select {
                 padding: 8px 10px;
@@ -146,15 +126,12 @@ function initProducts() {
         styleElement.textContent = selectStyle;
         document.head.appendChild(styleElement);
         
-        // Add to container
         filterContainer.appendChild(categoryFilter);
         filterContainer.appendChild(priceFilter);
         
-        // Add to header
         headerElement.appendChild(filterContainer);
     }
     
-    // Setup sự kiện cho bộ lọc
     function setupFilterEvents() {
         const categoryFilter = document.getElementById('category-filter');
         const priceFilter = document.getElementById('price-filter');
@@ -165,19 +142,16 @@ function initProducts() {
         }
     }
     
-    // Áp dụng bộ lọc
     function applyFilters() {
         const categoryValue = document.getElementById('category-filter').value;
         const priceValue = document.getElementById('price-filter').value;
         
         let filteredProducts = products;
         
-        // Filter by category
         if (categoryValue !== 'all') {
             filteredProducts = filteredProducts.filter(product => product.category === categoryValue);
         }
         
-        // Filter by price
         if (priceValue !== 'all') {
             const priceLimits = priceValue.split('-');
             const minPrice = parseInt(priceLimits[0]);
@@ -188,11 +162,9 @@ function initProducts() {
             );
         }
         
-        // Render filtered products
         renderProductsGrid(filteredProducts);
     }
     
-    // Chuyển đổi category code thành tên hiển thị
     function getCategoryName(categoryCode) {
         const categoryMap = {
             'skincare': 'Chăm sóc da',
@@ -206,13 +178,10 @@ function initProducts() {
     }
 }
 
-// Run initialization when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    // Check if products are loaded
     if (typeof products !== 'undefined') {
         initProducts();
     } else {
-        // If products not loaded yet, wait for main.js to finish loading components
         const checkProducts = setInterval(() => {
             if (typeof products !== 'undefined') {
                 clearInterval(checkProducts);

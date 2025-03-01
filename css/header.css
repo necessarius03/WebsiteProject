@@ -1,15 +1,13 @@
-/* Bổ sung vào file header.css */
 .header {
     background: #fff;
-    padding: 1rem 0; /* Thay đổi padding để chỉ có top và bottom */
+    padding: 1rem 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    display: block; /* Thay đổi từ flex thành block */
+    display: block;
     width: 100%;
     z-index: 1000;
     transition: all 0.3s ease;
 }
 
-/* Container cho nội dung header */
 .header__container {
     max-width: 1200px;
     margin: 0 auto;
@@ -26,23 +24,19 @@
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
-/* Class để thêm padding vào body khi header cố định */
 body.has-fixed-header {
-    padding-top: 80px; /* Điều chỉnh cho phù hợp với chiều cao header */
+    padding-top: 80px;
 }
 
-/* Thay đổi kích thước logo khi header cố định */
 .header--fixed .header__logo img {
-    height: 40px; /* Thu nhỏ logo khi cố định */
+    height: 40px;
 }
 
-/* Thu nhỏ thanh tìm kiếm khi header cố định */
 .header--fixed .header__search input {
     padding: 6px;
     width: 250px;
 }
 
-/* Điều chỉnh responsive */
 @media (max-width: 768px) {
     .header__container {
         flex-wrap: wrap;
@@ -55,7 +49,7 @@ body.has-fixed-header {
     }
     
     body.has-fixed-header {
-        padding-top: 120px; /* Điều chỉnh cho responsive */
+        padding-top: 120px;
     }
 }
 
@@ -82,7 +76,6 @@ body.has-fixed-header {
     font-weight: 500;
 }
 
-/* Dropdown menu styles */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -144,7 +137,6 @@ body.has-fixed-header {
     margin: 8px 0;
 }
 
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
     display: block;
 }

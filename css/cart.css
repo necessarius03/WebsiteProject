@@ -1,4 +1,3 @@
-/* Cart modal styles */
 .cart-modal {
     display: none;
     position: fixed;
@@ -60,7 +59,6 @@
     color: #666;
 }
 
-/* Cart item card style - theo yêu cầu: ảnh bên trái, tên góc trên phải, giá góc dưới phải */
 .cart-item {
     display: flex;
     padding: 10px 0;
@@ -182,7 +180,6 @@
     background-color: #45a049;
 }
 
-/* Make sure the cart modal is responsive */
 @media (max-width: 768px) {
     .cart-modal-content {
         margin: 30px auto;

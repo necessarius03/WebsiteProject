@@ -1,5 +1,3 @@
-/* Styles cho trang danh mục sản phẩm */
-
 .category-page {
     padding: 2rem 0;
     margin-bottom: 2rem;
@@ -23,7 +21,6 @@
     margin-bottom: 1rem;
 }
 
-/* Phần filter cho các sản phẩm trong category */
 .category-filters {
     display: flex;
     gap: 15px;
