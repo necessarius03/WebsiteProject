@@ -1,0 +1,100 @@
+/* Styles cho trang danh mục sản phẩm */
+
+.category-page {
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.category-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+}
+
+.category-header h1 {
+    font-size: 28px;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.category-header p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 1rem;
+}
+
+/* Phần filter cho các sản phẩm trong category */
+.category-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-label {
+    font-weight: bold;
+    color: #555;
+}
+
+.filter-select {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 14px;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #b3d9ff;
+}
+
+/* Thêm breadcrumb */
+.breadcrumb {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb li:not(:last-child)::after {
+    content: "›";
+    margin: 0 8px;
+    color: #999;
+}
+
+.breadcrumb a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb .current {
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .category-header h1 {
+        font-size: 24px;
+    }
+    
+    .category-filters {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

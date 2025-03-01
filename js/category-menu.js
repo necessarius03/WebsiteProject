@@ -1,4 +1,4 @@
-// Hàm để khởi tạo menu danh mục động
+// Function để khởi tạo menu danh mục động
 function initCategoryMenu() {
     console.log("Initializing dynamic category menu...");
     
@@ -29,7 +29,8 @@ function initCategoryMenu() {
         // Lấy tên hiển thị cho category
         const categoryName = getCategoryName(category);
         
-        categoryHTML += `<a href="#" data-category="${category}"><img src="${iconPath}" alt="${categoryName}"> ${categoryName}</a>`;
+        // Thay đổi ở đây: sử dụng link đến category.html với tham số category
+        categoryHTML += `<a href="category.html?category=${category}" data-category="${category}"><img src="${iconPath}" alt="${categoryName}"> ${categoryName}</a>`;
     });
     
     // Thêm divider
@@ -37,34 +38,20 @@ function initCategoryMenu() {
     
     // Các danh mục khác nếu cần
     categoryHTML += `
-        <a href="#"><img src="images/icons/luxury.png" alt="Thương hiệu cao cấp"> Thương hiệu cao cấp</a>
-        <a href="#"><img src="images/icons/korean.png" alt="Mỹ phẩm Hàn Quốc"> Mỹ phẩm Hàn Quốc</a>
-        <a href="#"><img src="images/icons/organic.png" alt="Mỹ phẩm thiên nhiên"> Mỹ phẩm thiên nhiên</a>
+        <a href="category.html?special=luxury"><img src="images/icons/luxury.png" alt="Thương hiệu cao cấp"> Thương hiệu cao cấp</a>
+        <a href="category.html?special=korean"><img src="images/icons/korean.png" alt="Mỹ phẩm Hàn Quốc"> Mỹ phẩm Hàn Quốc</a>
+        <a href="category.html?special=organic"><img src="images/icons/organic.png" alt="Mỹ phẩm thiên nhiên"> Mỹ phẩm thiên nhiên</a>
     `;
     
     // Cập nhật nội dung dropdown
     dropdownContent.innerHTML = categoryHTML;
     
-    // Thêm sự kiện click cho các danh mục
+    // Loại bỏ sự kiện click cũ (vì giờ ta dùng href trực tiếp)
+    // Tuy nhiên, ta có thể giữ lại sự kiện để xử lý các thao tác đặc biệt nếu cần
     document.querySelectorAll('.dropdown-content a[data-category]').forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const selectedCategory = this.getAttribute('data-category');
-            
-            // Lọc sản phẩm theo category được chọn
-            if (typeof filterProductsByCategory === 'function') {
-                filterProductsByCategory(selectedCategory);
-            } else {
-                console.log("Filtering by category:", selectedCategory);
-                // Nếu hàm lọc chưa được định nghĩa, có thể cập nhật dropdown category filter
-                const categorySelect = document.getElementById('category-filter');
-                if (categorySelect) {
-                    categorySelect.value = selectedCategory;
-                    // Trigger change event
-                    const event = new Event('change');
-                    categorySelect.dispatchEvent(event);
-                }
-            }
+            // Không cần preventDefault() vì chúng ta muốn chuyển hướng đến trang mới
+            console.log("Navigating to category:", this.getAttribute('data-category'));
         });
     });
     
@@ -82,18 +69,6 @@ function getCategoryName(categoryCode) {
     };
     
     return categoryMap[categoryCode] || categoryCode;
-}
-
-// Hàm để lọc sản phẩm theo category (tương tác với products.js)
-function filterProductsByCategory(category) {
-    // Tìm select element trong phần lọc sản phẩm
-    const categorySelect = document.getElementById('category-filter');
-    if (categorySelect) {
-        categorySelect.value = category;
-        // Trigger change event
-        const event = new Event('change');
-        categorySelect.dispatchEvent(event);
-    }
 }
 
 // Chạy khởi tạo khi DOM đã sẵn sàng
