@@ -14,18 +14,119 @@
     <link rel="stylesheet" href="css/cart.css">
 </head>
 <body>
-    <div id="header"></div>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">
+                <a href="index.html">
+                    <img src="images/icons/logo.png" alt="Logo">
+                </a>
+            </div>
+            <nav class="header__menu">
+                <div class="dropdown">
+                    <button class="dropdown-btn">Danh mục</button>
+                    <div class="dropdown-content">
+                        <div class="category-loading">Đang tải danh mục...</div>
+                    </div>
+                </div>
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="category.html">Tất cả sản phẩm</a></li>
+                    <li><a href="#">Khuyến mãi</a></li>
+                </ul>
+            </nav>
+            <div class="header__search">
+                <input type="text" placeholder="Tìm kiếm mỹ phẩm...">
+                <button type="submit">Tìm kiếm</button>
+            </div>
+            <div class="header__cart">
+                <a href="#" class="cart-icon">
+                    <img src="images/icons/cart.png" alt="Giỏ hàng">
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
     <main>
         <div class="container">
-            <div id="banner"></div>
-            <div id="features"></div>
-            <div id="products"></div>
+            <section class="banner">
+                <div class="banner__slider">
+                    <div class="slider__item active">
+                        <img src="images/banners/banner1.jpg" alt="Promotion 1">
+                    </div>
+                    
+                    <div class="slider__item">
+                        <img src="images/banners/banner2.jpg" alt="Promotion 2">
+                    </div>
+                    
+                    <div class="slider__item">
+                        <img src="images/banners/banner3.jpg" alt="Promotion 3">
+                    </div>
+                    
+                    <div class="slider__nav">
+                        <button class="prev">&#10094;</button>
+                        <button class="next">&#10095;</button>
+                    </div>
+                    
+                    <div class="slider__dots">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="featured">
+                <div class="featured__header">
+                    <h2>Mỹ Phẩm Nổi Bật</h2>
+                </div>
+                <div class="featured__carousel">
+                    <button class="carousel-control prev">&#10094;</button>
+                    <div class="featured__products">
+                    </div>
+                    <button class="carousel-control next">&#10095;</button>
+                </div>
+            </section>
+
+            <section class="products">
+                <div class="products__header">
+                    <h2>Tất Cả Sản Phẩm</h2>
+                </div>
+                <div class="products__grid">
+                </div>
+            </section>
         </div>
     </main>
-    <div id="footer"></div>
+
+    <footer class="footer">
+        <div class="footer__info">
+            <div class="company-info">
+                <h3>Thông Tin Công Ty</h3>
+                <p>Địa chỉ: 123 Đường ABC, Quận XYZ, TP.HCM</p>
+                <p>Email: contact@gmail.com</p>
+                <p>Hotline: 1900 1234</p>
+            </div>
+            <div class="footer__links">
+                <h3>Liên Kết Nhanh</h3>
+                <ul>
+                    <li><a href="#">Về chúng tôi</a></li>
+                    <li><a href="#">Chính sách bảo hành</a></li>
+                    <li><a href="#">Hướng dẫn mua hàng</a></li>
+                </ul>
+            </div>
+            <div class="footer__links">
+                <h3>Hỗ Trợ Khách Hàng</h3>
+                <ul>
+                    <li><a href="#">Trung tâm hỗ trợ</a></li>
+                    <li><a href="#">Câu hỏi thường gặp</a></li>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Phương thức thanh toán</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
     <script src="data/products.js"></script>
-
     <script src="js/main.js"></script>
     <script src="js/fixed-header.js"></script>
     <script src="js/search.js"></script>
