@@ -22,15 +22,15 @@ function initCategoryMenu() {
         const iconPath = `images/icons/${category}.png`;
         const categoryName = getCategoryName(category);
         
-        categoryHTML += `<a href="category.html?category=${category}" data-category="${category}"><img src="${iconPath}" alt="${categoryName}"> ${categoryName}</a>`;
+        categoryHTML += `<a href="category.html?category=${category}" data-category="${category}">${categoryName}</a>`;
     });
     
     categoryHTML += '<div class="dropdown-divider"></div>';
     
     categoryHTML += `
-        <a href="category.html?special=luxury"><img src="images/icons/luxury.png" alt="Thương hiệu cao cấp"> Thương hiệu cao cấp</a>
-        <a href="category.html?special=korean"><img src="images/icons/korean.png" alt="Mỹ phẩm Hàn Quốc"> Mỹ phẩm Hàn Quốc</a>
-        <a href="category.html?special=organic"><img src="images/icons/organic.png" alt="Mỹ phẩm thiên nhiên"> Mỹ phẩm thiên nhiên</a>
+        <a href="category.html?special=luxury">Thương hiệu cao cấp</a>
+        <a href="category.html?special=korean">Mỹ phẩm Hàn Quốc</a>
+        <a href="category.html?special=organic">Mỹ phẩm thiên nhiên</a>
     `;
     
     dropdownContent.innerHTML = categoryHTML;
